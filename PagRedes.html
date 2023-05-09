@@ -106,5 +106,17 @@ function myFunction() {
 }
 </script>
 
+<script>
+  fetch('/api/v3/as/applications/wsn-otaa/devices/eui-70b3d57ed005d277/packages')
+  .then(res =>{
+    return res.json();
+  })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => console.log(error));
+</script>
+
+
 </body>
 </html>
