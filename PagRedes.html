@@ -49,7 +49,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <div class="w3-content">
     <div class="w3-twothird">
       <h1>Temperatura</h1>
-      <h3 class="w3-padding-32">datos</h3>
+      <h3 class="w3-padding-32">Datos: <span id="temp"></span>°C</h3>
 
       <p class="w3-text-grey"></p>
     </div>
@@ -69,7 +69,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
     <div class="w3-twothird">
       <h1>Humedad</h1>
-      <h3 class="w3-padding-32">Datos: <span id="valor"></span> </h3>
+      <h3 class="w3-padding-32">Datos: <span id="hum"></span>% </h3>
       <p class="w3-text-grey"></p>
     </div>
   </div>
@@ -117,7 +117,9 @@ function myFunction() {
 </script> -->
 
 <script>
-  const valorElement = document.getElementById("valor");
+  const valorElementt = document.getElementById("temp");
+  const valorElementh = document.getElementById("hum");
+  const valorElementp = document.getElementById("ppm");
   let cond = true;
 
   function getDatos () {
@@ -128,18 +130,19 @@ function myFunction() {
     })
       .then(data =>{
         console.log(data)
-        console.log(data.valor)
-
-        valorElement.textContent = data.valor;
+        valorElementt.textContent = data.temp;
+        valorElementh.textContent = data.hum;
+        valorElementp.textContent = data.ppm;
       })
       .catch(error => console.log(error));
   }
+
   if (cond == true){
     getDatos();
     cond = false;
   }
-  setInterval(getDatos,5000);
-
+  
+  setInterval(getDatos,2000);
 </script>
 
 </body>
