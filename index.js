@@ -27,6 +27,18 @@ client.on('connect', () => {
     }
   })
 })
+
 client.on('message', (topic, payload) => {
-  console.log('Received Message:', topic, payload.toString())
+  let result= "";
+  payload = payload.toString();
+
+  for (let i = 0; i < payload.length; i += 2) {
+    let code = parseInt(payload.substr(i, 2), 16);
+    result += String.fromCharCode(code);
+  }
+  
+  const array = result.split("/");
+  var str = array[1];
+  console.log(str);
+
 })
