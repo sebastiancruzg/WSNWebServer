@@ -1,4 +1,8 @@
 const mqtt = require('mqtt')
+const express = require('express')
+const cors = require('cors')
+const app = express();
+
 
 const host = 'test.mosquitto.org'
 const port = '1883'
@@ -16,6 +20,7 @@ const client = mqtt.connect(connectUrl, {
 })
 
 const topic = 'enthu/260B8E5D/data'
+
 client.on('connect', () => {
   console.log('Connected')
   client.subscribe([topic], () => {
@@ -28,6 +33,8 @@ client.on('connect', () => {
   })
 })
 
+let str;
+
 client.on('message', (topic, payload) => {
   let result= "";
   payload = payload.toString();
@@ -38,7 +45,24 @@ client.on('message', (topic, payload) => {
   }
   
   const array = result.split("/");
-  var str = array[1];
+  str = array[1];
   console.log(str);
+})
 
+app.use(cors());
+// Ruta HTTP para recibir la solicitud y enviar la respuesta
+app.get('/', (req, res) => {
+  
+  if (str != undefined){
+    res.json({
+      "valor": str
+    });
+  } 
+});
+
+
+app.listen(5000,() => {
+
+  console.log("running on port 5000")
+  
 })
