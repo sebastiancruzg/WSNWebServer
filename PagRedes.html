@@ -49,7 +49,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <div class="w3-content">
     <div class="w3-twothird">
       <h1>Temperatura</h1>
-      <h3 class="w3-padding-32">Datos: <span id="temp"></span>°C</h3>
+      <h3 class="w3-padding-32">Datos: <span id="temp0"></span>°C</h3>
 
       <p class="w3-text-grey"></p>
     </div>
@@ -69,7 +69,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
     <div class="w3-twothird">
       <h1>Humedad</h1>
-      <h3 class="w3-padding-32">Datos: <span id="hum"></span>% </h3>
+      <h3 class="w3-padding-32">Datos: <span id="hum0"></span>% </h3>
       <p class="w3-text-grey"></p>
     </div>
   </div>
@@ -117,9 +117,8 @@ function myFunction() {
 </script> -->
 
 <script>
-  const valorElementt = document.getElementById("temp");
-  const valorElementh = document.getElementById("hum");
-  const valorElementp = document.getElementById("ppm");
+  const valorElementt = document.getElementById("temp0");
+  const valorElementh = document.getElementById("hum0");
   let cond = true;
 
   function getDatos () {
@@ -132,7 +131,6 @@ function myFunction() {
         console.log(data)
         valorElementt.textContent = data.temp;
         valorElementh.textContent = data.hum;
-        valorElementp.textContent = data.ppm;
       })
       .catch(error => console.log(error));
   }
