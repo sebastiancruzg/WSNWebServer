@@ -1,7 +1,32 @@
 const mqtt = require('mqtt')
 const express = require('express')
-const cors = require('cors')
+const cors = require('cors');
+const { default: mongoose } = require('mongoose');
 const app = express();
+
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect('mongodb://127.0.0.1:27017/wsn')
+    console.log(
+      `MongoDB Connected: ${conn.connection.host}`
+    )
+  } catch (error) {
+    console.error(`Error: ${error.message}`)
+    process.exit(1)
+  }
+}
+
+const datos = mongoose.model('datos', new mongoose.Schema({
+  nodo: String,
+  temp: String,
+  hum: String,
+  ppm: String,
+},{
+  versionKey: false,
+  timestamps: true
+}))
+
+connectDB();
 
 const host = 'test.mosquitto.org'
 const port = '1883'
@@ -62,7 +87,7 @@ let temp
 let hum 
 let ppm
 
-client.on('message', (topic, payload) => {
+client.on('message', async(topic, payload) => {
   let result= "";
   payload = payload.toString();
 
@@ -75,13 +100,29 @@ client.on('message', (topic, payload) => {
   temp = array[2];
   hum = array[3];
   ppm = array[4];
+
+  const newdatos = new datos({
+    nodo: nodo,
+    temp: temp,
+    hum: hum,
+    ppm: ppm,
+  })
+  
+  const save = await newdatos.save();
+
   console.log(nodo,temp,hum,ppm);
 })
+
+
 
 app.use(cors());
 
 // Ruta HTTP para recibir la solicitud y enviar la respuesta
-app.get('/', (req, res) => {
+app.get('/', async(req, res) => {
+
+
+  
+
     res.json({
       "nodo": nodo,
       "temp": temp,
