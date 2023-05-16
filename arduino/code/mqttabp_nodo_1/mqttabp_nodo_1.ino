@@ -1,5 +1,5 @@
 /**
- * Example of OTAA device      
+ * Example of ABP device
  * Authors: 
  *        Ivan Moreno
  *        Eduardo Contreras
@@ -14,23 +14,24 @@
 #include <SHT21.h>
 #include <MQ135.h>
 
+//ABP Credentials 
+const char *devAddr = "260B8E5D";
+const char *nwkSKey = "79958B2AAD9DD65D4C8B9B621563C46F";
+const char *appSKey = "E9F6F5036B268169FD839A096809437A";
+
 //variables sensores
+#define PIN_MQ135 A0
+MQ135 mq135_sensor(PIN_MQ135);
 SHT21 sht; 
-MQ135 gasSensor = MQ135(A0);
 int temp;
 int hum;
 int ppm;
-
-// OTAA credentials
-const char *devEui = "70B3D57ED005D277";
-const char *appEui = "0000000000000000";
-const char *appKey = "0A1A7335F0A459BC9790BF604916F9FB";
 
 const unsigned long interval = 5000;    // 10 s interval to send message
 unsigned long previousMillis = 0;  // will store last time message sent
 unsigned int counter = 0;     // message counter
 
-char myStr[100];
+char myStr[50];
 char outStr[255];
 byte recvStatus = 0;
 
@@ -60,44 +61,40 @@ void setup() {
 
   // Set Data Rate
   lora.setDataRate(SF10BW125);
-  lora.setTxPower(15,PA_BOOST_PIN);
+
+  // Set Tx Power
+  lora.setTxPower(5,PA_BOOST_PIN);
 
   // set channel to random
   lora.setChannel(MULTI);
   
-  // Put OTAA Key and DevAddress here
-  lora.setDevEUI(devEui);
-  lora.setAppEUI(appEui);
-  lora.setAppKey(appKey);
-
-  // Join procedure
-  bool isJoined;
-  do {
-    Serial.println("Joining...");
-    isJoined = lora.join();
-    
-    //wait for 10s to try again
-    delay(10000);
-  }while(!isJoined);
-  Serial.println("Joined to network");
+  // Put ABP Key and DevAddress here
+  lora.setNwkSKey(nwkSKey);
+  lora.setAppSKey(appSKey);
+  lora.setDevAddr(devAddr);
 }
 
 void loop() {
 
   temp = sht.getTemperature();  // get Temperature from SHT21
   hum = sht.getHumidity(); // get Humidity from SHT21
-  ppm=get_ppm();
-
+  ppm = mq135_sensor.getPPM();
+  
+  if (ppm>6000){
+    ppm = 6000;
+  }
+  
   // Check interval overflow
   if(millis() - previousMillis > interval) {
     previousMillis = millis(); 
 
-    sprintf(myStr, "temp:%d-hum:%d-ppm%d", temp,hum,ppm); 
+    sprintf(myStr, "/1/%d/%d/%d", temp,hum,ppm);
 
     Serial.print("Sending: ");
     Serial.println(myStr);
     
     lora.sendUplink(myStr, strlen(myStr), 0, 1);
+    counter++;
   }
 
   recvStatus = lora.readData(outStr);
@@ -107,9 +104,4 @@ void loop() {
   
   // Check Lora RX
   lora.update();
-}
-
-int get_ppm(){
-  ppm = gasSensor.getPPM();
-  return ppm;
 }

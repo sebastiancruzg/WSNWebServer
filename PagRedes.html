@@ -12,6 +12,18 @@
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
+.seccionnodos {  width: 33%;
+  display: inline-block;
+  border-top-style: solid;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-top-width: 0px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.textos {
+  padding-left: 60px;
+}
 </style>
 </head>
 <body>
@@ -44,19 +56,22 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <!--<button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>-->
 </header>
 
-<!-- First Grid -->
+<!-- Nodos -->
+<div id="nodo1" class="seccionnodos">
+  <h1 style="text-align:center;">Nodo 1</h1>
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
-    <div class="w3-twothird">
+    <div class="w3-third w3-center">
+      <i class="fa-solid fa-temperature-half" style="font-size:150px"></i>
+    </div>
+    <div class="w3-twothird textos">
       <h1>Temperatura</h1>
-      <h3 class="w3-padding-32">Datos: <span id="temp0"></span>°C</h3>
+      <h3 class="w3-padding-32">Datos: <span id="temp1"></span>°C</h3>
 
       <p class="w3-text-grey"></p>
     </div>
 
-    <div class="w3-third w3-center">
-      <i class="fa-solid fa-temperature-half" style="font-size:150px"></i>
-    </div>
+    
   </div>
 </div>
 
@@ -67,79 +82,183 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       <img src="https://img.icons8.com/?size=512&id=9269&format=png" style="width: auto; height: 180px">
     </div>
 
-    <div class="w3-twothird">
+    <div class="w3-twothird textos">
       <h1>Humedad</h1>
-      <h3 class="w3-padding-32">Datos: <span id="hum0"></span>% </h3>
+      <h3 class="w3-padding-32">Datos: <span id="hum1"></span>% </h3>
       <p class="w3-text-grey"></p>
     </div>
   </div>
 </div>
-<!--
-<div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
-    <h1 class="w3-margin w3-xlarge">Universidad del Norte</h1>
+
+<!-- Third Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <img src="https://img.icons8.com/?size=512&id=rbeD1p7PbOib&format=png" style="width: auto; height: 180px">
+    </div>
+    <div class="w3-twothird textos">
+      <h1>CO2</h1>
+      <h3 class="w3-padding-32">Datos: <span id="ppm1"></span>  ppm</h3>
+
+      <p class="w3-text-grey"></p>
+    </div>
+
+    
+  </div>
 </div>
--->
-<!-- Footer -->
-<!--
-<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
-  <div class="w3-xlarge w3-padding-32">
-    <i class="fa fa-facebook-official w3-hover-opacity"></i>
-    <i class="fa fa-instagram w3-hover-opacity"></i>
-    <i class="fa fa-snapchat w3-hover-opacity"></i>
-    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-    <i class="fa fa-twitter w3-hover-opacity"></i>
-    <i class="fa fa-linkedin w3-hover-opacity"></i>
- </div>
- <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-</footer>
--->
-<script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
 
-<!-- <script>
-  fetch('/api/v3/as/applications/wsn-otaa/devices/eui-70b3d57ed005d277/packages')
-  .then(res =>{
-    return res.json();
-  })
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => console.log(error));
-</script> -->
+</div>
+
+<div id="nodo2" class="seccionnodos">
+  <h1 style="text-align:center;">Nodo 2</h1>
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <i class="fa-solid fa-temperature-half" style="font-size:150px"></i>
+    </div>
+    <div class="w3-twothird textos">
+      <h1>Temperatura</h1>
+      <h3 class="w3-padding-32">Datos: <span id="temp2"></span>°C</h3>
+
+      <p class="w3-text-grey"></p>
+    </div>
+
+    
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <img src="https://img.icons8.com/?size=512&id=9269&format=png" style="width: auto; height: 180px">
+    </div>
+
+    <div class="w3-twothird textos">
+      <h1>Humedad</h1>
+      <h3 class="w3-padding-32">Datos: <span id="hum2"></span>% </h3>
+      <p class="w3-text-grey"></p>
+    </div>
+  </div>
+</div>
+
+<!-- Third Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <img src="https://img.icons8.com/?size=512&id=rbeD1p7PbOib&format=png" style="width: auto; height: 180px">
+    </div>
+    <div class="w3-twothird textos">
+      <h1>CO2</h1>
+      <h3 class="w3-padding-32">Datos: <span id="ppm2"></span> ppm</h3>
+
+      <p class="w3-text-grey"></p>
+    </div>
+
+    
+  </div>
+</div>
+
+</div>
+
+<div id="nodo3" class="seccionnodos">
+  <h1 style="text-align:center;">Nodo 3</h1>
+  <div class="w3-row-padding w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div class="w3-third w3-center">
+        <i class="fa-solid fa-temperature-half" style="font-size:150px"></i>
+      </div>
+      <div class="w3-twothird textos">
+        <h1>Temperatura</h1>
+        <h3 class="w3-padding-32">Datos: <span id="temp3"></span>°C</h3>
+  
+        <p class="w3-text-grey"></p>
+      </div>
+  
+      
+    </div>
+  </div>
+  
+  <!-- Second Grid -->
+  <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+    <div class="w3-content">
+      <div class="w3-third w3-center">
+        <img src="https://img.icons8.com/?size=512&id=9269&format=png" style="width: auto; height: 180px">
+      </div>
+  
+      <div class="w3-twothird textos">
+        <h1>Humedad</h1>
+        <h3 class="w3-padding-32">Datos: <span id="hum3"></span>% </h3>
+        <p class="w3-text-grey"></p>
+      </div>
+    </div>
+  </div>
+  
+<!-- Third Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-third w3-center">
+      <img src="https://img.icons8.com/?size=512&id=rbeD1p7PbOib&format=png" style="width: auto; height: 180px">
+    </div>
+    <div class="w3-twothird textos">
+      <h1>CO2</h1>
+      <h3 class="w3-padding-32">Datos: <span id="ppm3"></span> ppm</h3>
+
+      <p class="w3-text-grey"></p>
+    </div>
+
+    
+  </div>
+</div>
+
+  </div>
 
 <script>
-  const valorElementt = document.getElementById("temp0");
-  const valorElementh = document.getElementById("hum0");
-  let cond = true;
+  let nodo
+  let temp
+  let hum
+  let ppm
+
+  const valorElementT1 = document.getElementById("temp1");
+  const valorElementH1= document.getElementById("hum1");
+  const valorElementP1 = document.getElementById("ppm1");
+  const valorElementT2 = document.getElementById("temp2");
+  const valorElementH2= document.getElementById("hum2");
+  const valorElementP2 = document.getElementById("ppm2");
+  const valorElementT3 = document.getElementById("temp3");
+  const valorElementH3= document.getElementById("hum3");
+  const valorElementP3 = document.getElementById("ppm3");
 
   function getDatos () {
-
     fetch('http://localhost:5000')
     .then(res =>{
       return res.json();
     })
       .then(data =>{
         console.log(data)
-        valorElementt.textContent = data.temp;
-        valorElementh.textContent = data.hum;
+
+        if(data.nodo==1){
+        valorElementT1.textContent = data.temp;
+        valorElementH1.textContent = data.hum;
+        valorElementP1.textContent = data.ppm;
+        }
+
+        if(data.nodo==2){
+        valorElementT2.textContent = data.temp;
+        valorElementH2.textContent = data.hum;
+        valorElementP2.textContent = data.ppm;
+        }
+
+        if(data.nodo==3){
+        valorElementT3.textContent = data.temp;
+        valorElementH3.textContent = data.hum;
+        valorElementP3.textContent = data.ppm;
+        }
+
       })
       .catch(error => console.log(error));
   }
 
-  if (cond == true){
-    getDatos();
-    cond = false;
-  }
-  
   setInterval(getDatos,2000);
 </script>
 
