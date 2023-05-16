@@ -66,7 +66,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
     <div class="w3-twothird textos">
       <h1>Temperatura</h1>
-      <h3 class="w3-padding-32">Datos: <span id="temp0"></span>°C</h3>
+      <h3 class="w3-padding-32">Datos: <span id="temp1"></span>°C</h3>
 
       <p class="w3-text-grey"></p>
     </div>
@@ -84,7 +84,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
     <div class="w3-twothird textos">
       <h1>Humedad</h1>
-      <h3 class="w3-padding-32">Datos: <span id="hum0"></span>% </h3>
+      <h3 class="w3-padding-32">Datos: <span id="hum1"></span>% </h3>
       <p class="w3-text-grey"></p>
     </div>
   </div>
@@ -97,8 +97,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       <img src="https://img.icons8.com/?size=512&id=rbeD1p7PbOib&format=png" style="width: auto; height: 180px">
     </div>
     <div class="w3-twothird textos">
-      <h1>PPM</h1>
-      <h3 class="w3-padding-32">Datos: <span id="temp"></span>°C</h3>
+      <h1>CO2</h1>
+      <h3 class="w3-padding-32">Datos: <span id="ppm1"></span>  ppm</h3>
 
       <p class="w3-text-grey"></p>
     </div>
@@ -118,7 +118,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
     <div class="w3-twothird textos">
       <h1>Temperatura</h1>
-      <h3 class="w3-padding-32">Datos: <span id="temp"></span>°C</h3>
+      <h3 class="w3-padding-32">Datos: <span id="temp2"></span>°C</h3>
 
       <p class="w3-text-grey"></p>
     </div>
@@ -136,7 +136,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
     <div class="w3-twothird textos">
       <h1>Humedad</h1>
-      <h3 class="w3-padding-32">Datos: <span id="hum"></span>% </h3>
+      <h3 class="w3-padding-32">Datos: <span id="hum2"></span>% </h3>
       <p class="w3-text-grey"></p>
     </div>
   </div>
@@ -149,8 +149,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       <img src="https://img.icons8.com/?size=512&id=rbeD1p7PbOib&format=png" style="width: auto; height: 180px">
     </div>
     <div class="w3-twothird textos">
-      <h1>PPM</h1>
-      <h3 class="w3-padding-32">Datos: <span id="temp"></span>°C</h3>
+      <h1>CO2</h1>
+      <h3 class="w3-padding-32">Datos: <span id="ppm2"></span> ppm</h3>
 
       <p class="w3-text-grey"></p>
     </div>
@@ -170,7 +170,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       </div>
       <div class="w3-twothird textos">
         <h1>Temperatura</h1>
-        <h3 class="w3-padding-32">Datos: <span id="temp"></span>°C</h3>
+        <h3 class="w3-padding-32">Datos: <span id="temp3"></span>°C</h3>
   
         <p class="w3-text-grey"></p>
       </div>
@@ -188,7 +188,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   
       <div class="w3-twothird textos">
         <h1>Humedad</h1>
-        <h3 class="w3-padding-32">Datos: <span id="hum"></span>% </h3>
+        <h3 class="w3-padding-32">Datos: <span id="hum3"></span>% </h3>
         <p class="w3-text-grey"></p>
       </div>
     </div>
@@ -201,8 +201,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
       <img src="https://img.icons8.com/?size=512&id=rbeD1p7PbOib&format=png" style="width: auto; height: 180px">
     </div>
     <div class="w3-twothird textos">
-      <h1>PPM</h1>
-      <h3 class="w3-padding-32">Datos: <span id="temp"></span>°C</h3>
+      <h1>CO2</h1>
+      <h3 class="w3-padding-32">Datos: <span id="ppm3"></span> ppm</h3>
 
       <p class="w3-text-grey"></p>
     </div>
@@ -213,54 +213,52 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
   </div>
 
-
 <script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-</script>
+  let nodo
+  let temp
+  let hum
+  let ppm
 
-<!-- <script>
-  fetch('/api/v3/as/applications/wsn-otaa/devices/eui-70b3d57ed005d277/packages')
-  .then(res =>{
-    return res.json();
-  })
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => console.log(error));
-</script> -->
-
-<script>
-  const valorElementt = document.getElementById("temp0");
-  const valorElementh = document.getElementById("hum0");
-  let cond = true;
+  const valorElementT1 = document.getElementById("temp1");
+  const valorElementH1= document.getElementById("hum1");
+  const valorElementP1 = document.getElementById("ppm1");
+  const valorElementT2 = document.getElementById("temp2");
+  const valorElementH2= document.getElementById("hum2");
+  const valorElementP2 = document.getElementById("ppm2");
+  const valorElementT3 = document.getElementById("temp3");
+  const valorElementH3= document.getElementById("hum3");
+  const valorElementP3 = document.getElementById("ppm3");
 
   function getDatos () {
-
     fetch('http://localhost:5000')
     .then(res =>{
       return res.json();
     })
       .then(data =>{
         console.log(data)
-        valorElementt.textContent = data.temp;
-        valorElementh.textContent = data.hum;
+
+        if(data.nodo==1){
+        valorElementT1.textContent = data.temp;
+        valorElementH1.textContent = data.hum;
+        valorElementP1.textContent = data.ppm;
+        }
+
+        if(data.nodo==2){
+        valorElementT2.textContent = data.temp;
+        valorElementH2.textContent = data.hum;
+        valorElementP2.textContent = data.ppm;
+        }
+
+        if(data.nodo==3){
+        valorElementT3.textContent = data.temp;
+        valorElementH3.textContent = data.hum;
+        valorElementP3.textContent = data.ppm;
+        }
+
       })
       .catch(error => console.log(error));
   }
 
-  if (cond == true){
-    getDatos();
-    cond = false;
-  }
-  
   setInterval(getDatos,2000);
 </script>
 

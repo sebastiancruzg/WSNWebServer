@@ -20,6 +20,7 @@ const client = mqtt.connect(connectUrl, {
 
 const topic1 = 'enthu/260B8E5D/data'
 const topic2 = 'enthu/260BF6C8/data'
+const topic3= 'enthu/260B233B/data'
 
 client.on('connect', () => {
   console.log('Connected')
@@ -32,6 +33,10 @@ client.on('connect', () => {
     console.log(`Subscribe to topic '${topic2}'`)
   })
 
+  client.subscribe([topic3], () => {
+    console.log(`Subscribe to topic '${topic3}'`)
+  })
+
   client.publish(topic1, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
     if (error) {
       console.error(error)
@@ -39,6 +44,12 @@ client.on('connect', () => {
   })
 
   client.publish(topic2, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
+    if (error) {
+      console.error(error)
+    }
+  })
+
+  client.publish(topic3, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
     if (error) {
       console.error(error)
     }
@@ -59,28 +70,24 @@ client.on('message', (topic, payload) => {
     let code = parseInt(payload.substr(i, 2), 16);
     result += String.fromCharCode(code);
   }
-
   const array = result.split("/");
   nodo = array[1];
   temp = array[2];
   hum = array[3];
   ppm = array[4];
   console.log(nodo,temp,hum,ppm);
-
 })
 
 app.use(cors());
 
 // Ruta HTTP para recibir la solicitud y enviar la respuesta
 app.get('/', (req, res) => {
-
     res.json({
       "nodo": nodo,
       "temp": temp,
       "hum": hum,
       "ppm": ppm,
     }); 
-
 });
 
 const portn = 5000;

@@ -15,13 +15,14 @@
 #include <MQ135.h>
 
 //ABP Credentials 
-const char *devAddr = "260BF6C8";
-const char *nwkSKey = "281CFAFB56283EA5180B263665A5F3E7";
-const char *appSKey = "FE041ABE04BE8EFF9E8FE7ABD8994680";
+const char *devAddr = "260B233B";
+const char *nwkSKey = "8132D1B2AEDD38434B5E84EA6533D553";
+const char *appSKey = "9A82C5DE4656BC5782AFCE49F62BEA26";
 
 //variables sensores
+#define PIN_MQ135 A0
+MQ135 mq135_sensor(PIN_MQ135);
 SHT21 sht; 
-MQ135 gasSensor = MQ135(A0);
 int temp;
 int hum;
 int ppm;
@@ -59,7 +60,7 @@ void setup() {
   lora.setDeviceClass(CLASS_A);
 
   // Set Data Rate
-  lora.setDataRate(SF8BW125);
+  lora.setDataRate(SF10BW125);
 
   // set channel to random
   lora.setChannel(MULTI);
@@ -74,13 +75,17 @@ void loop() {
 
   temp = sht.getTemperature();  // get Temperature from SHT21
   hum = sht.getHumidity(); // get Humidity from SHT21
-  ppm=get_ppm();
-
+  ppm = mq135_sensor.getPPM();
+  
+  if (ppm>2000){
+    ppm = 2000;
+  }
+  
   // Check interval overflow
   if(millis() - previousMillis > interval) {
     previousMillis = millis(); 
 
-    sprintf(myStr, "/1/%d/%d/%d", temp,hum,ppm);
+    sprintf(myStr, "/3/%d/%d/%d", temp,hum,ppm);
 
     Serial.print("Sending: ");
     Serial.println(myStr);
@@ -96,9 +101,4 @@ void loop() {
   
   // Check Lora RX
   lora.update();
-}
-
-int get_ppm(){
-  ppm = gasSensor.getPPM();
-  return ppm;
 }
