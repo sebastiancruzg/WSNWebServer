@@ -18,27 +18,27 @@ const client = mqtt.connect(connectUrl, {
   reconnectPeriod: 1000,
 })
 
-const topic0 = 'enthu/260B8E5D/data'
-const topic1 = 'enthu/260BF6C8/data'
+const topic1 = 'enthu/260B8E5D/data'
+const topic2 = 'enthu/260BF6C8/data'
 
 client.on('connect', () => {
   console.log('Connected')
-
-  client.subscribe([topic0], () => {
-    console.log(`Subscribe to topic '${topic0}'`)
-  })
 
   client.subscribe([topic1], () => {
     console.log(`Subscribe to topic '${topic1}'`)
   })
 
-  client.publish(topic0, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
+  client.subscribe([topic2], () => {
+    console.log(`Subscribe to topic '${topic2}'`)
+  })
+
+  client.publish(topic1, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
     if (error) {
       console.error(error)
     }
   })
 
-  client.publish(topic1, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
+  client.publish(topic2, 'nodejs mqtt test', { qos: 0, retain: false }, (error) => {
     if (error) {
       console.error(error)
     }
@@ -78,6 +78,7 @@ app.get('/', (req, res) => {
       "nodo": nodo,
       "temp": temp,
       "hum": hum,
+      "ppm": ppm,
     }); 
 
 });
