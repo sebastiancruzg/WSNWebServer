@@ -106,6 +106,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <div class="w3-twothird textos">
       <h1>CO2</h1>
       <h3 class="w3-padding-32">Datos: <span id="ppm1"></span>  ppm</h3>
+      <img id="imagenPpm1" src="" class="satisf" alt="Imagen PPM1">
 
       <p class="w3-text-grey"></p>
     </div>
@@ -158,6 +159,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <div class="w3-twothird textos">
       <h1>CO2</h1>
       <h3 class="w3-padding-32">Datos: <span id="ppm2"></span> ppm</h3>
+      <img id="imagenPpm2" src="" class="satisf" alt="Imagen PPM2">
 
       <p class="w3-text-grey"></p>
     </div>
@@ -210,6 +212,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <div class="w3-twothird textos">
       <h1>CO2</h1>
       <h3 class="w3-padding-32">Datos: <span id="ppm3"></span> ppm</h3>
+      <img id="imagenPpm3" src="" class="satisf" alt="Imagen PPM1">
 
       <p class="w3-text-grey"></p>
     </div>
@@ -248,18 +251,65 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         valorElementT1.textContent = data.temp;
         valorElementH1.textContent = data.hum;
         valorElementP1.textContent = data.ppm;
+
+        const imagenPpm = document.getElementById("imagenPpm1");
+        const ppm = data.ppm;
+
+        if (ppm < 500) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=pcCSHYJczCPb&format=png";
+        } else if (ppm >= 500 && ppm < 800) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=676&format=png";
+        } else if (ppm >= 800 && ppm < 1200) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=61606&format=png";
+        } else if (ppm >= 1200 && ppm < 1500) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=678&format=png";
+        } else{
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=l8SqFksMItQ7&format=png";
+        }
+
+
         }
 
         if(data.nodo==2){
         valorElementT2.textContent = data.temp;
         valorElementH2.textContent = data.hum;
         valorElementP2.textContent = data.ppm;
+
+        const imagenPpm = document.getElementById("imagenPpm2");
+        const ppm = data.ppm;
+
+        if (ppm < 500) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=pcCSHYJczCPb&format=png";
+        } else if (ppm >= 500 && ppm < 800) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=676&format=png";
+        } else if (ppm >= 800 && ppm < 1200) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=61606&format=png";
+        } else if (ppm >= 1200 && ppm < 1500) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=678&format=png";
+        } else{
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=l8SqFksMItQ7&format=png";
+        }
         }
 
         if(data.nodo==3){
         valorElementT3.textContent = data.temp;
         valorElementH3.textContent = data.hum;
         valorElementP3.textContent = data.ppm;
+
+        const imagenPpm = document.getElementById("imagenPpm3");
+        const ppm = data.ppm;
+
+        if (ppm < 500) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=pcCSHYJczCPb&format=png";
+        } else if (ppm >= 500 && ppm < 800) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=676&format=png";
+        } else if (ppm >= 800 && ppm < 1200) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=61606&format=png";
+        } else if (ppm >= 1200 && ppm < 1500) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=678&format=png";
+        } else{
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=l8SqFksMItQ7&format=png";
+        }
         }
 
       })
