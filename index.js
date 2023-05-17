@@ -118,11 +118,7 @@ client.on('message', async(topic, payload) => {
 app.use(cors());
 
 // Ruta HTTP para recibir la solicitud y enviar la respuesta
-app.get('/', async(req, res) => {
-
-
-  
-
+app.get('/', (req, res) => {
     res.json({
       "nodo": nodo,
       "temp": temp,
