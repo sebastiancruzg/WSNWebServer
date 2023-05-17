@@ -234,17 +234,6 @@ function myFunction() {
 }
 </script>
 
-<!-- <script>
-  fetch('/api/v3/as/applications/wsn-otaa/devices/eui-70b3d57ed005d277/packages')
-  .then(res =>{
-    return res.json();
-  })
-    .then(data => {
-      console.log(data);
-    })
-    .catch(error => console.log(error));
-</script> -->
-
 <script>
   const valorElementt = document.getElementById("temp");
   const valorElementh = document.getElementById("hum");
@@ -274,7 +263,7 @@ function myFunction() {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=61606&format=png";
         } else if (ppm >= 1200 && ppm < 1500) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=678&format=png";
-        } else{
+        } else if(ppm>1500){
           imagenPpm.src = "https://img.icons8.com/?size=512&id=l8SqFksMItQ7&format=png";
         }
       })
