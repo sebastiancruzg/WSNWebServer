@@ -138,7 +138,7 @@ app.get('/index', (req, res) => {
 
 app.get('/db1',async(req, res) => {
 
-  await datos.find({ nodo: '1'})
+  await datos.find({ nodo: '1'}).sort({ createdAt:  -1 })
   .then((datos) => {
     console.log('datos:', datos);
     res.render('tabla1.ejs', { datos });
@@ -152,7 +152,7 @@ app.get('/db1',async(req, res) => {
 
 app.get('/db2',async(req, res) => {
 
-  await datos.find({ nodo: '2'})
+  await datos.find({ nodo: '2'}).sort({ createdAt:  -1 })
   .then((datos) => {
     console.log('datos:', datos);
     res.render('tabla2.ejs', { datos });
@@ -166,7 +166,7 @@ app.get('/db2',async(req, res) => {
 
 app.get('/db3',async(req, res) => {
 
-  await datos.find({ nodo: '3'})
+  await datos.find({ nodo: '3'}).sort({ createdAt:  -1 })
   .then((datos) => {
     console.log('datos:', datos);
     res.render('tabla3.ejs', { datos });

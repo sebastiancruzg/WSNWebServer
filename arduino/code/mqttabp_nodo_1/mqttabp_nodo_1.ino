@@ -47,7 +47,7 @@ const sRFM_pins RFM_pins = {
 void setup() {
   // Setup loraid access
   Serial.begin(9600);
-  while(!Serial);
+  while(0);
   if(!lora.init()){
     Serial.println("RFM95 not detected");
     delay(5000);
@@ -58,6 +58,9 @@ void setup() {
 
   // Set LoRaWAN Class change CLASS_A or CLASS_C
   lora.setDeviceClass(CLASS_A);
+
+  // Set Tx Power
+  lora.setTxPower(0,PA_BOOST_PIN)
 
   // Set Data Rate
   lora.setDataRate(SF10BW125);
@@ -77,8 +80,12 @@ void loop() {
   hum = sht.getHumidity(); // get Humidity from SHT21
   ppm = mq135_sensor.getPPM();
   
-  if (ppm>2000){
-    ppm = 2000;
+  if (ppm>6000){
+    ppm = 6000;
+  }
+
+  if (ppm<0){
+    ppm = 0;
   }
   
   // Check interval overflow
