@@ -31,6 +31,32 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   width: 150px;
   height: auto;
 }
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  margin: 0 10px;
+  padding: 15px 20px;
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
+  background-color: #af4c4c;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -62,6 +88,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <p class="w3-xlarge">Enoc Acosta, Sebastian Gutierrez, David Arrieta.</p>
   <!--<button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>-->
 </header>
+
+<div class="container">
+  <h1 class="title">Acceso a datos históricos</h1>
+  <div class="button-container">
+    <a href="views/tabla1.ejs" class="button">Nodo 1</a>
+    <a href="views/tabla2.ejs" class="button">Nodo 2</a>
+    <a href="views/tabla3.ejs" class="button">Nodo 3</a>
+  </div>
 
 <!-- Nodos -->
 <div id="nodo1" class="seccionnodos">
