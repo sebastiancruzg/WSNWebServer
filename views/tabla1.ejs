@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .button-container {
+      display: flex;
+      margin-bottom: 1%;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .button {
+      margin: 0 10px;
+      padding: 15px 20px;
+      font-size: 18px;
+      text-decoration: none;
+      color: white;
+      background-color: #af4c4c;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+  </style>
+  <title>Tabla de usuarios</title>
+</head>
+
+<div class="container">
+  <h1 class="title">Nodo 1</h1>
+  <div class="button-container">
+    <a href="PagRedes.html" class="button">Volver</a>
+  </div>
+  
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>Nodo</th>
+        <th>Temperatura</th>
+        <th>Humedad</th>
+        <th>ppm</th>
+        <th>Fecha y hora</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% datos.forEach(function(datos) { %>
+        <tr>
+          <td><%= datos.nodo %></td>
+          <td><%= datos.temp %></td>
+          <td><%= datos.hum %></td>
+          <td><%= datos.ppm %></td>
+          <td><%= datos.createdAt %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

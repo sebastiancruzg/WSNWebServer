@@ -24,6 +24,39 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .textos {
   padding-left: 60px;
 }
+.satisf{
+  border-left-style: solid;
+  border-left-width: 0px;
+  margin-left: 150px;
+  width: 150px;
+  height: auto;
+}
+.container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.button {
+  margin: 0 10px;
+  padding: 15px 20px;
+  font-size: 18px;
+  text-decoration: none;
+  color: white;
+  background-color: #af4c4c;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -56,6 +89,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <!--<button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">Get Started</button>-->
 </header>
 
+<div class="container">
+  <h1 class="title">Acceso a datos históricos</h1>
+  <div class="button-container">
+    <a href="http://localhost:5000/db1" class="button">Nodo 1</a>
+    <a href="http://localhost:5000/db2" class="button">Nodo 2</a>
+    <a href="http://localhost:5000/db3" class="button">Nodo 3</a>
+  </div>
+
 <!-- Nodos -->
 <div id="nodo1" class="seccionnodos">
   <h1 style="text-align:center;">Nodo 1</h1>
@@ -75,7 +116,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   </div>
 </div>
 
-<!-- Second Grid -->
+<!-- Humedad1 -->
 <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-third w3-center">
@@ -90,7 +131,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   </div>
 </div>
 
-<!-- Third Grid -->
+<!-- PPM1 -->
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-third w3-center">
@@ -99,6 +140,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <div class="w3-twothird textos">
       <h1>CO2</h1>
       <h3 class="w3-padding-32">Datos: <span id="ppm1"></span>  ppm</h3>
+      <img id="imagenPpm1" src="" class="satisf" alt="Imagen PPM1">
 
       <p class="w3-text-grey"></p>
     </div>
@@ -127,7 +169,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   </div>
 </div>
 
-<!-- Second Grid -->
+<!-- Humedad2 -->
 <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-third w3-center">
@@ -142,7 +184,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   </div>
 </div>
 
-<!-- Third Grid -->
+<!-- PPM2 -->
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-third w3-center">
@@ -151,6 +193,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <div class="w3-twothird textos">
       <h1>CO2</h1>
       <h3 class="w3-padding-32">Datos: <span id="ppm2"></span> ppm</h3>
+      <img id="imagenPpm2" src="" class="satisf" alt="Imagen PPM2">
 
       <p class="w3-text-grey"></p>
     </div>
@@ -179,7 +222,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
   </div>
   
-  <!-- Second Grid -->
+  <!-- Humedad3 -->
   <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
     <div class="w3-content">
       <div class="w3-third w3-center">
@@ -194,7 +237,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
   </div>
   
-<!-- Third Grid -->
+<!-- PPM3 -->
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-third w3-center">
@@ -203,6 +246,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     <div class="w3-twothird textos">
       <h1>CO2</h1>
       <h3 class="w3-padding-32">Datos: <span id="ppm3"></span> ppm</h3>
+      <img id="imagenPpm3" src="" class="satisf" alt="Imagen PPM1">
 
       <p class="w3-text-grey"></p>
     </div>
@@ -217,7 +261,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   let nodo
   let temp
   let hum
-  let ppm
+  let ppm=0;
 
   const valorElementT1 = document.getElementById("temp1");
   const valorElementH1= document.getElementById("hum1");
@@ -241,23 +285,71 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         valorElementT1.textContent = data.temp;
         valorElementH1.textContent = data.hum;
         valorElementP1.textContent = data.ppm;
+
+        const imagenPpm = document.getElementById("imagenPpm1");
+        const ppm = data.ppm;
+
+        if (ppm < 400) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=pcCSHYJczCPb&format=png";
+        } else if (ppm >= 400 && ppm < 900) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=676&format=png";
+        } else if (ppm >= 1000 && ppm < 1500) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=61606&format=png";
+        } else if (ppm >= 1500 && ppm < 3000) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=678&format=png";
+        } else if (ppm>3000){
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=l8SqFksMItQ7&format=png";
+        }
+
+
         }
 
         if(data.nodo==2){
         valorElementT2.textContent = data.temp;
         valorElementH2.textContent = data.hum;
         valorElementP2.textContent = data.ppm;
+
+        const imagenPpm = document.getElementById("imagenPpm2");
+        const ppm = data.ppm;
+
+        if (ppm < 400) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=pcCSHYJczCPb&format=png";
+        } else if (ppm >= 400 && ppm < 900) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=676&format=png";
+        } else if (ppm >= 1000 && ppm < 1500) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=61606&format=png";
+        } else if (ppm >= 1500 && ppm < 3000) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=678&format=png";
+        } else if (ppm>3000){
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=l8SqFksMItQ7&format=png";
+        }
         }
 
         if(data.nodo==3){
         valorElementT3.textContent = data.temp;
         valorElementH3.textContent = data.hum;
         valorElementP3.textContent = data.ppm;
+
+        const imagenPpm = document.getElementById("imagenPpm3");
+        const ppm = data.ppm;
+
+        if (ppm < 400) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=pcCSHYJczCPb&format=png";
+        } else if (ppm >= 400 && ppm < 900) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=676&format=png";
+        } else if (ppm >= 1000 && ppm < 1500) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=61606&format=png";
+        } else if (ppm >= 1500 && ppm < 3000) {
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=678&format=png";
+        } else if (ppm>3000){
+          imagenPpm.src = "https://img.icons8.com/?size=512&id=l8SqFksMItQ7&format=png";
+        }
         }
 
       })
       .catch(error => console.log(error));
   }
+
 
   setInterval(getDatos,2000);
 </script>
