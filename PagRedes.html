@@ -92,9 +92,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <div class="container">
   <h1 class="title">Acceso a datos históricos</h1>
   <div class="button-container">
-    <a href="views/tabla1.ejs" class="button">Nodo 1</a>
-    <a href="views/tabla2.ejs" class="button">Nodo 2</a>
-    <a href="views/tabla3.ejs" class="button">Nodo 3</a>
+    <a href="http://localhost:5000/db1" class="button">Nodo 1</a>
+    <a href="http://localhost:5000/db2" class="button">Nodo 2</a>
+    <a href="http://localhost:5000/db3" class="button">Nodo 3</a>
   </div>
 
 <!-- Nodos -->
@@ -261,7 +261,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   let nodo
   let temp
   let hum
-  let ppm
+  let ppm=0;
 
   const valorElementT1 = document.getElementById("temp1");
   const valorElementH1= document.getElementById("hum1");
@@ -289,15 +289,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         const imagenPpm = document.getElementById("imagenPpm1");
         const ppm = data.ppm;
 
-        if (ppm < 500) {
+        if (ppm < 400) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=pcCSHYJczCPb&format=png";
-        } else if (ppm >= 500 && ppm < 800) {
+        } else if (ppm >= 400 && ppm < 900) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=676&format=png";
-        } else if (ppm >= 800 && ppm < 1200) {
+        } else if (ppm >= 1000 && ppm < 1500) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=61606&format=png";
-        } else if (ppm >= 1200 && ppm < 1500) {
+        } else if (ppm >= 1500 && ppm < 3000) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=678&format=png";
-        } else{
+        } else if (ppm>3000){
           imagenPpm.src = "https://img.icons8.com/?size=512&id=l8SqFksMItQ7&format=png";
         }
 
@@ -312,15 +312,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         const imagenPpm = document.getElementById("imagenPpm2");
         const ppm = data.ppm;
 
-        if (ppm < 500) {
+        if (ppm < 400) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=pcCSHYJczCPb&format=png";
-        } else if (ppm >= 500 && ppm < 800) {
+        } else if (ppm >= 400 && ppm < 900) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=676&format=png";
-        } else if (ppm >= 800 && ppm < 1200) {
+        } else if (ppm >= 1000 && ppm < 1500) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=61606&format=png";
-        } else if (ppm >= 1200 && ppm < 1500) {
+        } else if (ppm >= 1500 && ppm < 3000) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=678&format=png";
-        } else{
+        } else if (ppm>3000){
           imagenPpm.src = "https://img.icons8.com/?size=512&id=l8SqFksMItQ7&format=png";
         }
         }
@@ -333,15 +333,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
         const imagenPpm = document.getElementById("imagenPpm3");
         const ppm = data.ppm;
 
-        if (ppm < 500) {
+        if (ppm < 400) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=pcCSHYJczCPb&format=png";
-        } else if (ppm >= 500 && ppm < 800) {
+        } else if (ppm >= 400 && ppm < 900) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=676&format=png";
-        } else if (ppm >= 800 && ppm < 1200) {
+        } else if (ppm >= 1000 && ppm < 1500) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=61606&format=png";
-        } else if (ppm >= 1200 && ppm < 1500) {
+        } else if (ppm >= 1500 && ppm < 3000) {
           imagenPpm.src = "https://img.icons8.com/?size=512&id=678&format=png";
-        } else{
+        } else if (ppm>3000){
           imagenPpm.src = "https://img.icons8.com/?size=512&id=l8SqFksMItQ7&format=png";
         }
         }
