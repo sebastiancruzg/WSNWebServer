@@ -3,7 +3,10 @@ const express = require('express')
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
 const app = express();
+const path = require('path');
 const ejs = require('ejs');
+
+app.use(express.static(path.join()));
 
 const connectDB = async () => {
   try {
@@ -127,6 +130,10 @@ app.get('/', (req, res) => {
       "ppm": ppm,
     }); 
 
+});
+
+app.get('/index', (req, res) => {
+  res.sendFile(path.join(__dirname, 'PagRedes.html'));
 });
 
 app.get('/db1',async(req, res) => {
