@@ -3,6 +3,7 @@ const express = require('express')
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
 const app = express();
+const ejs = require('ejs');
 
 const connectDB = async () => {
   try {
@@ -108,14 +109,14 @@ client.on('message', async(topic, payload) => {
     ppm: ppm,
   })
   
+  if(nodo==1 || nodo==2 || nodo==3){
   const save = await newdatos.save();
-
+  }
   console.log(nodo,temp,hum,ppm);
 })
 
-
-
 app.use(cors());
+
 
 // Ruta HTTP para recibir la solicitud y enviar la respuesta
 app.get('/', (req, res) => {
@@ -125,6 +126,49 @@ app.get('/', (req, res) => {
       "hum": hum,
       "ppm": ppm,
     }); 
+
+});
+
+app.get('/db1',async(req, res) => {
+
+  await datos.find({ nodo: '1'})
+  .then((datos) => {
+    console.log('datos:', datos);
+    res.render('tabla1.ejs', { datos });
+    
+  })
+  .catch((error) => {
+    console.error('Error querying datos:', error);
+  }); 
+  
+});
+
+app.get('/db2',async(req, res) => {
+
+  await datos.find({ nodo: '2'})
+  .then((datos) => {
+    console.log('datos:', datos);
+    res.render('tabla2.ejs', { datos });
+    
+  })
+  .catch((error) => {
+    console.error('Error querying datos:', error);
+  }); 
+  
+});
+
+app.get('/db3',async(req, res) => {
+
+  await datos.find({ nodo: '3'})
+  .then((datos) => {
+    console.log('datos:', datos);
+    res.render('tabla3.ejs', { datos });
+    
+  })
+  .catch((error) => {
+    console.error('Error querying datos:', error);
+  }); 
+  
 });
 
 const portn = 5000;
