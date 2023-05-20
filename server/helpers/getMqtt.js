@@ -97,4 +97,4 @@ client.on('message', async(topic, payload) => {
 })
 }
 
-module.exports=getMqtt;
+module.exports={getMqtt};

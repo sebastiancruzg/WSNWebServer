@@ -1,10 +1,11 @@
 const express = require('express')
 const cors = require('cors');
 const app = express();
-const getMqtt = require('./helpers/getMqtt')
+const { getMqtt } = require('./helpers/getMqtt')
 const connectDB = require('./config/connectionDB')
 
-const result = getMqtt();
+const result = getMqtt;
+getMqtt();
 console.log(result);
 connectDB();
 app.use(cors());
@@ -12,10 +13,10 @@ app.use(cors());
 // Ruta HTTP para recibir la solicitud y enviar la respuesta
 app.get('/', (req, res) => {
     res.json({
-      "nodo": nodo,
-      "temp": temp,
-      "hum": hum,
-      "ppm": ppm,
+      "nodo": getMqtt.nodo,
+      "temp": getMqtt.temp,
+      "hum": getMqtt.hum,
+      "ppm": getMqtt.ppm,
     }); 
 
 });
